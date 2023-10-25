@@ -1,0 +1,15 @@
+{
+  "name": "weather-app-p2",
+  "version": "1.0.0",
+  "description": "An app for displaying weather and forecasting of cities in Australia.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bennychen2004181026/weather-app-p2"
+  },
+  "author": "Ben",
+  "license": "ISC"
+}
