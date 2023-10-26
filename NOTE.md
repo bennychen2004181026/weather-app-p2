@@ -37,3 +37,8 @@
 -TemperatureRange
 -Name
 -Date
+
+### Global Assets
+
+-fonts
+-backgroundImage
