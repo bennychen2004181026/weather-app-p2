@@ -43,3 +43,7 @@
 
 -fonts
 -backgroundImage
+
+#### VS CODE Extension
+-Image Preview
+-Code Spell Check

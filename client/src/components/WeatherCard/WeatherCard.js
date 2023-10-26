@@ -1,5 +1,11 @@
+import React from 'react';
+
 const WeatherCard = () => {
-    <div>WeatherCard</div>
-}
+    return (
+        <div>
+            WeatherCard
+        </div>
+    )
+};
 
 export default WeatherCard;
