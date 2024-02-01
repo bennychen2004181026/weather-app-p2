@@ -2,7 +2,7 @@
 
 ## Step 1:
 
-### Devide the components by responsibilties
+### Divide the components by responsibilities
 
 -App
    -WeatherCard
@@ -31,7 +31,7 @@
                -WeatherIcon
                -TemperatureRange
 
-### The compoent with identicial name could be reused
+### The component with identical name could be reused
 
 -WeatherIcon
 -TemperatureRange
