@@ -12,10 +12,10 @@ const CurrentCity = () =>
 (
     <div className='flex flex-col items-center space-y-6 shadow-md'>
         <Image imageUrl={ bg } alt='cloud' className='absolute top-0 right-0' />
-        <Date value='20 July, Sunday 12:00' className='text-white' />
+        <Date value='20 July, Sunday 12:00' className='text-red' />
         <Name value='New York' className='text-white text-3xl font-bold' />
         <Temperature value='20' className='text-slate-200 text-8xl font-bold ' />
-        <TemperatureRange value='18 ~ 23' className='text-white' />
+        <TemperatureRange value='18 ~ 23' className='text-black' />
         <WeatherIcon imageUrl={ icon } alt='cloud' />
         <Meta />
     </div>
