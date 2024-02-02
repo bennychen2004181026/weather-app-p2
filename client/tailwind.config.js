@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{jsx,js}"],
+  content: [ "./src/**/*.{jsx,js}" ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'alimama': [ 'AlimamaFangYuanTiVF-Square', 'helvetica' ]
+      }
+    },
   },
   plugins: [],
-}
+};
