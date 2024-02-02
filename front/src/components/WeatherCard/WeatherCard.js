@@ -17,7 +17,7 @@ const WeatherCard = () =>
         <div className="row-span-3 col-span-4 mx-6 flex flex-col justify-center max-xs:w-full max-xs:mx-0">
             <Forecast />
         </div>
-        <div className="row-span-1 col-span-4 border-8 m-6">
+        <div className="row-span-1 col-span-4 mx-6 flex items-center max-md:order-first max-md:mx-0">
             <SearchBar />
         </div>
         <div className="row-span-2 col-span-4 border-8 m-6">
