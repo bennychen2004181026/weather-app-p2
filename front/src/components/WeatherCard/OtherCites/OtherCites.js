@@ -1,6 +1,13 @@
+import City from "./City/City";
+
 const OtherCites = () =>
 (
-    <div>OtherCites</div>
+    <div className="flex">
+        <City />
+        <City />
+        <City />
+        <City />
+    </div>
 );
 
 export default OtherCites;
