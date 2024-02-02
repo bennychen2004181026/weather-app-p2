@@ -1,8 +1,8 @@
 const CurrentCity = () =>
-{
+(
     <div>
         CurrentCity
-    </div>;
-};
+    </div>
+);
 
 export default CurrentCity;
