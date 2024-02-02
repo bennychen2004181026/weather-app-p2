@@ -5,7 +5,7 @@ import airQuality from './assets/PM2.5.svg';
 import somatosensory from './assets/somatosensory.svg';
 
 const Meta = () => (
-  <div className='flex justify-between bg-slate-50 rounded-2xl w-5/6 p-4'>
+  <div className='flex font-semibold justify-around bg-slate-50 rounded-2xl w-full py-2 px-5 min-h-[100px]  max-xl:px-1'>
     <MetaItem imageUrl={ wind } value='9km/h' alt='wind icon' />
     <MetaItem imageUrl={ humidity } value='85%' alt='wind icon' />
     <MetaItem imageUrl={ airQuality } value='75μg' alt='wind icon' />

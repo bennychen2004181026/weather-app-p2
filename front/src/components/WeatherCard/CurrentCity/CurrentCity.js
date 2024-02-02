@@ -10,12 +10,12 @@ import icon from '../../WeatherIcon/assets/Cloudy_day.png';
 
 const CurrentCity = () =>
 (
-    <div className='flex flex-col items-center space-y-6 shadow-md'>
+    <div className='relative flex flex-col items-center h-full justify-around p-3 max-xs:min-h-[550px]'>
         <Image imageUrl={ bg } alt='cloud' className='absolute top-0 right-0' />
-        <Date value='20 July, Sunday 12:00' className='text-red' />
+        <Date value='20 July, Sunday 12:00' className='text-white text-left  text-1xl w-11/12' />
         <Name value='New York' className='text-white text-3xl font-bold' />
         <Temperature value='20' className='text-slate-200 text-8xl font-bold ' />
-        <TemperatureRange value='18 ~ 23' className='text-black' />
+        <TemperatureRange value='18 ~ 23' className='text-white text-1xl' />
         <WeatherIcon imageUrl={ icon } alt='cloud' />
         <Meta />
     </div>
