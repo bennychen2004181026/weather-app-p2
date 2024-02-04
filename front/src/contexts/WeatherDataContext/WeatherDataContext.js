@@ -13,7 +13,7 @@ const WeatherDataProvider = ( { children } ) =>
 
     const totalData = {
         data: [ SydneyData, ShanghaiData, NewYorkData, LondonData ],
-        error: SydneyError || ShanghaiError || NewYorkError || LondonError,
+        error: [ SydneyError, ShanghaiError, NewYorkError, LondonError ],
         isLoading: SydneyLoading || ShanghaiLoading || NewYorkLoading || LondonLoading
     };
 
@@ -21,3 +21,5 @@ const WeatherDataProvider = ( { children } ) =>
         <WeatherDataContext.Provider value={ totalData }>{ children }</WeatherDataContext.Provider>
     );
 };
+
+export default { WeatherDataContext, WeatherDataProvider };

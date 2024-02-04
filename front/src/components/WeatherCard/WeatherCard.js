@@ -1,35 +1,32 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import CurrentCity from './CurrentCity';
 import Forecast from './Forecast';
 import OtherCities from './OtherCities';
 import SearchBar from './SearchBar';
-import useFetchWeatherData from '../../hooks/useFetchWeatherData';
 import useSnackbar from '../../hooks/useSnackbar';
+import { WeatherDataContext } from '../../contexts/WeatherDataContext';
 
 const WeatherCard = () =>
 {
-    const showSnackbar = useSnackbarHelper();
+    const showSnackbar = useSnackbar();
     const [ isLoading, setIsLoading ] = useState( false );
     const [ error, setError ] = useState( null );
-    const { weatherData: SydneyData, error: SydneyError, isLoading: SydneyLoading } = useFetchWeatherData( 'Sydney', 'next4days' );
-    const { weatherData: ShanghaiData, error: ShanghaiError, isLoading: ShanghaiLoading } = useFetchWeatherData( 'Shanghai' );
-    const { weatherData: NewYorkData, error: NewYorkError, isLoading: NewYorkLoading } = useFetchWeatherData( 'NewYork' );
-    const { weatherData: LondonData, error: LondonError, isLoading: LondonLoading } = useFetchWeatherData( 'London' );
+    const { isLoading: dataIsLoading, error: dataError } = useContext( WeatherDataContext );
 
     useEffect( () =>
     {
-        setIsLoading( SydneyLoading || ShanghaiLoading || NewYorkLoading || LondonLoading );
-    }, [ SydneyLoading, ShanghaiLoading, NewYorkLoading, LondonLoading ] );
+        setIsLoading( dataIsLoading );
+    }, [ dataIsLoading ] );
 
     useEffect( () =>
     {
-        const firstError = [ SydneyError, ShanghaiError, NewYorkError, LondonError ].find( e => e != null );
+        const firstError = dataError.find( e => e != null );
         if ( firstError )
         {
             setError( firstError );
         }
-    }, [ SydneyError, ShanghaiError, NewYorkError, LondonError ] );
+    }, [ dataError ] );
 
     if ( isLoading )
     {
