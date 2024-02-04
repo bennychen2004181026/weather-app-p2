@@ -4,6 +4,7 @@ const useFetchWeatherData = ( requiredParam, optionalParamOne = '', optionalPara
 {
     const [ weatherData, setWeatherData ] = useState( null );
     cont[ error, setError ] = useState( null );
+    const [ isLoading, setIsLoading ] = useState( false );
     const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
     let api_Url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${ requiredParam }`;
     if ( optionalParamOne ) api_Url += `/${ optionalParamOne }`;
@@ -14,6 +15,7 @@ const useFetchWeatherData = ( requiredParam, optionalParamOne = '', optionalPara
     {
         const fetchData = async () =>
         {
+            setIsLoading( true );
             try
             {
                 const response = await fetch( `${ api_Url }` );
@@ -27,11 +29,15 @@ const useFetchWeatherData = ( requiredParam, optionalParamOne = '', optionalPara
             {
                 setError( error );
             }
+            finally
+            {
+                setIsLoading( false );
+            }
         };
         fetchData();
     }, [] );
 
-    return { weatherData, error };
+    return { weatherData, error, isLoading };
 };
 
 export default useFetchWeatherData;
