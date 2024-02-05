@@ -4,12 +4,10 @@ import CurrentCity from './CurrentCity';
 import Forecast from './Forecast';
 import OtherCities from './OtherCities';
 import SearchBar from './SearchBar';
-import useSnackbar from '../../hooks/useSnackbar';
 import { WeatherDataContext } from '../../contexts/WeatherDataContext/WeatherDataContext';
 
 const WeatherCard = () =>
 {
-    const showSnackbar = useSnackbar();
     const [ isLoading, setIsLoading ] = useState( false );
     const [ error, setError ] = useState( null );
     const { data, isLoading: dataIsLoading, error: dataError } = useContext( WeatherDataContext );
@@ -49,25 +47,33 @@ const WeatherCard = () =>
             </div> );
     }
 
+    if ( data[ 0 ] )
+    {
+        return (
+            <div className="max-h-[900px] max-md:max-h-[1500px] max-xl:w-[90%] max-lg:w-[95%] max-md:h-full max-md:flex max-md:flex-col max-w-[1650px] p-6 max-xs:p-2 rounded-3xl w-4/5 h-4/5 mx-auto bg-slate-100 shadow-blue-800 overflow-hidden grid grid-cols-6 grid-rows-6 gap-4" >
+                <div className="row-span-6 rounded-3xl col-span-2"
+                    style={ {
+                        backgroundImage:
+                            "linear-gradient(152deg, rgb(137, 155, 240) 1%, rgb(63, 85, 228) 54%, rgb(63, 85, 228) 96%)",
+                    } }
+                >
+                    <CurrentCity data={ data } />
+                </div>
+                <div className="row-span-3 col-span-4 mx-6 flex flex-col justify-center max-xs:w-full max-xs:mx-0">
+                    <Forecast data={ data } />
+                </div>
+                <div className="row-span-1 col-span-4 mx-6 flex items-center max-md:order-first max-md:mx-0">
+                    <SearchBar />
+                </div>
+                <div className="row-span-2 col-span-4 border-8 m-6">
+                    <OtherCities />
+                </div>
+            </div> );
+    }
+
     return (
-        <div className="max-h-[900px] max-md:max-h-[1500px] max-xl:w-[90%] max-lg:w-[95%] max-md:h-full max-md:flex max-md:flex-col max-w-[1650px] p-6 max-xs:p-2 rounded-3xl w-4/5 h-4/5 mx-auto bg-slate-100 shadow-blue-800 overflow-hidden grid grid-cols-6 grid-rows-6 gap-4" >
-            <div className="row-span-6 rounded-3xl col-span-2"
-                style={ {
-                    backgroundImage:
-                        "linear-gradient(152deg, rgb(137, 155, 240) 1%, rgb(63, 85, 228) 54%, rgb(63, 85, 228) 96%)",
-                } }
-            >
-                <CurrentCity data={ data } />
-            </div>
-            <div className="row-span-3 col-span-4 mx-6 flex flex-col justify-center max-xs:w-full max-xs:mx-0">
-                <Forecast />
-            </div>
-            <div className="row-span-1 col-span-4 mx-6 flex items-center max-md:order-first max-md:mx-0">
-                <SearchBar />
-            </div>
-            <div className="row-span-2 col-span-4 border-8 m-6">
-                <OtherCities />
-            </div>
+        <div className="flex flex-col items-center justify-center max-h-[900px] max-md:max-h-[1500px] max-xl:w-[90%] max-lg:w-[95%] max-md:h-full max-md:flex max-md:flex-col max-w-[1650px] p-6 max-xs:p-2 rounded-3xl w-4/5 h-4/5 mx-auto bg-slate-100 shadow-blue-800 overflow-hidden" >
+            <h1 className="text-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Error Fetching Data</h1>
         </div> );
 };
 

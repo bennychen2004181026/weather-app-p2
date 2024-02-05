@@ -1,16 +1,12 @@
-import { useContext } from 'react';
-
 import MetaItem from './components/MetaItem';
 import wind from './assets/wind.svg';
 import humidity from './assets/humidity.svg';
 import airQuality from './assets/PM2.5.svg';
 import somatosensory from './assets/somatosensory.svg';
-import { WeatherDataContext } from '../../../../../contexts/WeatherDataContext/WeatherDataContext';
 import fahrenheitToCelsius from '../../../../../utils/fahrenheitToCelsius';
 
-const Meta = () =>
+const Meta = ( { data } ) =>
 {
-  const { data } = useContext( WeatherDataContext );
   const feelsLikeTemperature = fahrenheitToCelsius( `${ data[ 0 ].days[ 0 ].feelslike }` );
   return (
     <div className='flex font-semibold justify-around bg-slate-50 rounded-2xl w-full py-2 px-5 min-h-[100px]  max-xl:px-1'>

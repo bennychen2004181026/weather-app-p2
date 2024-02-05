@@ -17,6 +17,7 @@ const useFetchWeatherData = ( requiredParam, optionalParamOne = '', optionalPara
         try
         {
             const response = await fetch( `${ api_Url }` );
+
             if ( !response.ok )
             {
                 const errorText = await response.text();

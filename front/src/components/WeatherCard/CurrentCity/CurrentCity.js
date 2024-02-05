@@ -1,5 +1,3 @@
-import { useContext } from 'react';
-
 import Meta from './components/Meta';
 import Temperature from './components/Temperature';
 import TemperatureRange from '../../TemperatureRange';
@@ -7,7 +5,6 @@ import WeatherIcon from '../../WeatherIcon';
 import Date from '../../Date';
 import Name from '../../Name';
 import Image from './components/Image';
-import { WeatherDataContext } from '../../../contexts/WeatherDataContext/WeatherDataContext';
 import getWeatherIcon from '../../../utils/getWeatherIcon';
 import getFormatDate from '../../../utils/getFormatDate';
 import fahrenheitToCelsius from '../../../utils/fahrenheitToCelsius';
@@ -28,7 +25,7 @@ const CurrentCity = ( { data } ) =>
             <Temperature value={ currentTemperature } className='text-slate-200 text-8xl font-bold ' />
             <TemperatureRange value={ `${ maxTemperature } ~ ${ minTemperature }` } className='text-white text-1xl' />
             <WeatherIcon imageUrl={ icon } alt={ `data[ 0 ].days[ 0 ].icon` } />
-            <Meta />
+            <Meta data={ data } />
         </div> );
 };
 
