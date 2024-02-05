@@ -8,7 +8,7 @@ import NewYork from './assets/NewYork.png';
 import Shanghai from './assets/Shanghai.png';
 import Sydney from './assets/Sydney.png';
 
-const OtherCites = () =>
+const OtherCites = ( { data } ) =>
 (
     <div className="flex justify-around h-full max-xs:hidden">
         <City cityImageUrl={ London } cityImageAlt="London" cityName="Sydney" imageUrl={ Rain } imageAlt='Rainy' Range='20 ~ 25' />

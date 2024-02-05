@@ -41,7 +41,7 @@ const WeatherCard = () =>
             </div> );
     }
 
-    if ( data[ 0 ] )
+    if ( data.every( element => element !== null ) )
     {
         return (
             <div className="max-h-[900px] max-md:max-h-[1500px] max-xl:w-[90%] max-lg:w-[95%] max-md:h-full max-md:flex max-md:flex-col max-w-[1650px] p-6 max-xs:p-2 rounded-3xl w-4/5 h-4/5 mx-auto bg-slate-100 shadow-blue-800 overflow-hidden grid grid-cols-6 grid-rows-6 gap-4" >
@@ -60,7 +60,7 @@ const WeatherCard = () =>
                     <SearchBar />
                 </div>
                 <div className="row-span-2 col-span-4 border-8 m-6">
-                    <OtherCities />
+                    <OtherCities data={ data } />
                 </div>
             </div> );
     }
