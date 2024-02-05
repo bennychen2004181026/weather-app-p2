@@ -7,13 +7,13 @@ const getCityImage = ( index ) =>
 {
     switch ( index )
     {
-        case '1':
+        case '0':
             return { imageUrl: Sydney };
-        case '2':
+        case '1':
             return { imageUrl: Shanghai };
-        case '3':
+        case '2':
             return { imageUrl: NewYork };
-        case '4':
+        case '3':
             return { imageUrl: London };
         default:
             return { imageUrl: Sydney };

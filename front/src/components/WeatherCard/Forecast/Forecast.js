@@ -11,7 +11,7 @@ const Forecast = ( { data } ) =>
         <div className="flex justify-between text-center h-full max-xs:flex-col max-xs:bg-slate-50 max-xs:rounded-2xl max-xs:border max-xs:divide-y">
             { forecastData.map( ( day, index ) =>
             {
-                < DayOfWeek
+                return < DayOfWeek
                     key={ index }
                     Day={ getDayOfWeek( day.datetime ) }
                     date={ getFormatDayAndMonth( day.datetime ) }
