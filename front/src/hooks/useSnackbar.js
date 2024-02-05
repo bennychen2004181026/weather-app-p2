@@ -2,7 +2,7 @@ import { useSnackbar } from 'notistack';
 
 import CloseSnackbarButton from '../components/CloseButton';
 
-const useSnackbar = () =>
+const useSnackbarHelper = () =>
 {
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     const customSnackbar = ( message, variant ) =>
@@ -25,4 +25,4 @@ const useSnackbar = () =>
     return customSnackbar;
 };
 
-export default useSnackbar;
+export default useSnackbarHelper;

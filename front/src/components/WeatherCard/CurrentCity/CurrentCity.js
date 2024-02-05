@@ -7,22 +7,29 @@ import WeatherIcon from '../../WeatherIcon';
 import Date from '../../Date';
 import Name from '../../Name';
 import Image from './components/Image';
-import { WeatherDataContext } from '../../contexts/WeatherDataContext';
+import { WeatherDataContext } from '../../../contexts/WeatherDataContext/WeatherDataContext';
 import getWeatherIcon from '../../../utils/getWeatherIcon';
+import getFormatDate from '../../../utils/getFormatDate';
+import fahrenheitToCelsius from '../../../utils/fahrenheitToCelsius';
 
-const CurrentCity = () =>
+const CurrentCity = ( { data } ) =>
 {
-    const { data } = useContext( WeatherDataContext );
-    const { background, icon } = getWeatherIcon( data.days[ 0 ].icon );
-    <div className='relative flex flex-col items-center h-full justify-around p-3 max-xs:min-h-[550px]'>
-        <Image imageUrl={ background } alt={ data.days[ 0 ].icon } className='absolute top-0 right-0' />
-        <Date value='20 July, Sunday 12:00' className='text-white text-left  text-1xl w-11/12' />
-        <Name value='New York' className='text-white text-3xl font-bold' />
-        <Temperature value='20' className='text-slate-200 text-8xl font-bold ' />
-        <TemperatureRange value='18 ~ 23' className='text-white text-1xl' />
-        <WeatherIcon imageUrl={ icon } alt={ data.days[ 0 ].icon } />
-        <Meta />
-    </div>;
+    const { background, icon } = getWeatherIcon( data[ 0 ].days[ 0 ].icon );
+    const dateTime = getFormatDate( data[ 0 ].days[ 0 ].datetime, data[ 0 ].currentConditions.datetime );
+    const currentTemperature = fahrenheitToCelsius( `${ data[ 0 ].currentConditions.temp }` );
+    const maxTemperature = fahrenheitToCelsius( `${ data[ 0 ].days[ 0 ].tempmax }` );
+    const minTemperature = fahrenheitToCelsius( `${ data[ 0 ].days[ 0 ].tempmin } }` );
+    return (
+        <div className='relative flex flex-col items-center h-full justify-around p-3 max-xs:min-h-[550px]'>
+            <Image imageUrl={ background } alt={ `data[ 0 ].days[ 0 ].icon ` } className='absolute top-0 right-0' />
+            <Date value={ dateTime } className='text-white text-left  text-1xl w-11/12' />
+            <Name value={ `${ data[ 0 ].resolvedAddress.split( /[-,]/ )[ 0 ].trim().charAt( 0 ).toUpperCase() + data[ 0 ].resolvedAddress.split( /[-,]/ )[ 0 ].trim().slice( 1 ) }` }
+                className='text-white text-3xl font-bold' />
+            <Temperature value={ currentTemperature } className='text-slate-200 text-8xl font-bold ' />
+            <TemperatureRange value={ `${ maxTemperature } ~ ${ minTemperature }` } className='text-white text-1xl' />
+            <WeatherIcon imageUrl={ icon } alt={ `data[ 0 ].days[ 0 ].icon` } />
+            <Meta />
+        </div> );
 };
 
 export default CurrentCity;

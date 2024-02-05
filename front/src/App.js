@@ -2,7 +2,7 @@ import WeatherCard from "./components/WeatherCard";
 import BackgroundImage from "./components/BackgroundImage";
 import bgImage from "./assets/bgImage.png";
 import { SnackbarProvider } from 'notistack';
-import { WeatherDataProvider } from './contexts/WeatherDataContext/';
+import { WeatherDataProvider } from './contexts/WeatherDataContext/WeatherDataContext';
 
 const App = () => (
   <SnackbarProvider maxSnack={ 3 }>

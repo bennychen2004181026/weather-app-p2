@@ -2,9 +2,9 @@ import React from 'react';
 
 import useFetchWeatherData from '../../hooks/useFetchWeatherData';
 
-const WeatherDataContext = React.createContext( null );
+export const WeatherDataContext = React.createContext( null );
 
-const WeatherDataProvider = ( { children } ) =>
+export const WeatherDataProvider = ( { children } ) =>
 {
     const { weatherData: SydneyData, error: SydneyError, isLoading: SydneyLoading } = useFetchWeatherData( 'Sydney', 'next4days' );
     const { weatherData: ShanghaiData, error: ShanghaiError, isLoading: ShanghaiLoading } = useFetchWeatherData( 'Shanghai' );
@@ -14,12 +14,8 @@ const WeatherDataProvider = ( { children } ) =>
     const totalData = {
         data: [ SydneyData, ShanghaiData, NewYorkData, LondonData ],
         error: [ SydneyError, ShanghaiError, NewYorkError, LondonError ],
-        isLoading: SydneyLoading || ShanghaiLoading || NewYorkLoading || LondonLoading
+        isLoading: SydneyLoading || ShanghaiLoading || NewYorkLoading || LondonLoading,
     };
 
-    return (
-        <WeatherDataContext.Provider value={ totalData }>{ children }</WeatherDataContext.Provider>
-    );
+    return <WeatherDataContext.Provider value={ totalData }>{ children }</WeatherDataContext.Provider>;
 };
-
-export default { WeatherDataContext, WeatherDataProvider };

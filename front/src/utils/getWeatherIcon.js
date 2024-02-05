@@ -1,12 +1,12 @@
-import Cloudy_day_background from './assets/Cloudy_day_background.png';
-import Rain_background from './assets/Rain_background.png';
-import Snow_background from './assets/Snow_background.png';
-import Sunny_day_background from './assets/Sunny_day_background.png';
-import Cloudy_day from '../../WeatherIcon/assets/Cloudy_day.png';
-import Cloudy from '../../WeatherIcon/assets/Cloudy.png';
-import Rain from '../../WeatherIcon/assets/Rain.png';
-import Snow from '../../WeatherIcon/assets/Snow.png';
-import Sunny from '../../WeatherIcon/assets/Sunny.png';
+import Cloudy_day_background from '../components/WeatherCard/CurrentCity/assets/Cloudy_day_background.png';
+import Rain_background from '../components/WeatherCard/CurrentCity/assets/Rain_background.png';
+import Snow_background from '../components/WeatherCard/CurrentCity/assets/Snow_background.png';
+import Sunny_day_background from '../components/WeatherCard/CurrentCity/assets/Sunny day_background.png';
+import Cloudy_day from '../components/WeatherIcon/assets/Cloudy_day.png';
+import Cloudy from '../components/WeatherIcon/assets/Cloudy.png';
+import Rain from '../components/WeatherIcon/assets/Rain.png';
+import Snow from '../components/WeatherIcon/assets/Snow.png';
+import Sunny from '../components/WeatherIcon/assets/Sunny.png';
 
 const getWeatherIcon = ( condition ) =>
 {
