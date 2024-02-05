@@ -1,21 +1,70 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-import useFetchWeatherData from '../../hooks/useFetchWeatherData';
+import fetchWeatherData from '../../utils/fetchWeatherData';
 
 export const WeatherDataContext = React.createContext( null );
 
 export const WeatherDataProvider = ( { children } ) =>
 {
-    const { weatherData: SydneyData, error: SydneyError, isLoading: SydneyLoading } = useFetchWeatherData( 'Sydney', 'next4days' );
-    const { weatherData: ShanghaiData, error: ShanghaiError, isLoading: ShanghaiLoading } = useFetchWeatherData( 'Shanghai' );
-    const { weatherData: NewYorkData, error: NewYorkError, isLoading: NewYorkLoading } = useFetchWeatherData( 'NewYork' );
-    const { weatherData: LondonData, error: LondonError, isLoading: LondonLoading } = useFetchWeatherData( 'London' );
+    const [ weatherDataList, setWeatherDataList ] = useState( {
+        data: [],
+        error: [],
+        isLoading: false
+    } );
 
-    const totalData = {
-        data: [ SydneyData, ShanghaiData, NewYorkData, LondonData ],
-        error: [ SydneyError, ShanghaiError, NewYorkError, LondonError ],
-        isLoading: SydneyLoading || ShanghaiLoading || NewYorkLoading || LondonLoading,
+    useEffect( () =>
+    {
+        const cities = [ 'Sydney', 'Shanghai', 'New York', 'London' ];
+        const fetchAllCitiesData = async () =>
+        {
+            setWeatherDataList( ( prevState ) => ( { ...prevState, isLoading: true } ) );
+            try
+            {
+                const promises = cities.map( city => fetchWeatherData( city, 'next4days' ) );
+                const results = await Promise.all( promises );
+                setWeatherDataList( {
+                    data: results.map( ( result ) => result.data ),
+                    error: results.map( ( result ) => result.error ),
+                    isLoading: false
+                } );
+            } catch ( error )
+            {
+                setWeatherDataList( prevState => ( {
+                    ...prevState,
+                    error: [ error ],
+                    isLoading: false
+                } ) );
+            }
+        };
+        fetchAllCitiesData();
+    }, [] );
+
+    const searchCity = async ( newCity ) =>
+    {
+        setWeatherDataList( ( prevState ) => ( { ...prevState, isLoading: true } ) );
+        try
+        {
+            const { data, error } = await fetchWeatherData( newCity, 'next4days' );
+            setWeatherDataList( prevState =>
+            ( {
+                ...prevState,
+                data: [ data, ...prevState.data.slice( 0, 3 ) ],
+                error: [ error ],
+                isLoading: false
+            } ) );
+        } catch ( error )
+        {
+            setWeatherDataList( prevState => ( {
+                ...prevState,
+                error: [ error ],
+                isLoading: false
+            } ) );
+        }
     };
 
-    return <WeatherDataContext.Provider value={ totalData }>{ children }</WeatherDataContext.Provider>;
+    const value = {
+        weatherDataList,
+        searchCity
+    };
+    return <WeatherDataContext.Provider value={ value }>{ children }</WeatherDataContext.Provider>;
 };

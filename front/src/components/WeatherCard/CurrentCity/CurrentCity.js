@@ -23,7 +23,7 @@ const CurrentCity = ( { data } ) =>
             <Name value={ `${ data[ 0 ].resolvedAddress.split( /[-,]/ )[ 0 ].trim().charAt( 0 ).toUpperCase() + data[ 0 ].resolvedAddress.split( /[-,]/ )[ 0 ].trim().slice( 1 ) }` }
                 className='text-white text-3xl font-bold' />
             <Temperature value={ currentTemperature } className='text-slate-200 text-8xl font-bold ' />
-            <TemperatureRange value={ `${ maxTemperature } ~ ${ minTemperature }` } className='text-white text-1xl' />
+            <TemperatureRange value={ `${ maxTemperature }°C ~ ${ minTemperature }°C` } className='text-white text-1xl' />
             <WeatherIcon imageUrl={ icon } alt={ `data[ 0 ].days[ 0 ].icon` } />
             <Meta data={ data } />
         </div> );

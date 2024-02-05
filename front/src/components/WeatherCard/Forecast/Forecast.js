@@ -1,9 +1,5 @@
 import DayOfWeek from "./components/DayOfWeek";
 import getDayOfWeek from "../../../utils/getDayOfWeek";
-import Cloudy_day from '../../WeatherIcon/assets/Cloudy_day.png';
-import Rain from '../../WeatherIcon/assets/Rain.png';
-import Sunny from '../../WeatherIcon/assets/Sunny.png';
-import Cloudy from '../../WeatherIcon/assets/Cloudy.png';
 import getFormatDayAndMonth from "../../../utils/getFormatDayAndMonth";
 import getWeatherIcon from "../../../utils/getWeatherIcon";
 import fahrenheitToCelsius from "../../../utils/fahrenheitToCelsius";
@@ -21,7 +17,7 @@ const Forecast = ( { data } ) =>
                     date={ getFormatDayAndMonth( day.datetime ) }
                     imageUrl={ getWeatherIcon( day.icon ).icon }
                     imageAlt={ day.description }
-                    Range={ `${ fahrenheitToCelsius( day.tempmax ) } ~ ${ fahrenheitToCelsius( day.tempmin ) }` }
+                    Range={ `${ fahrenheitToCelsius( day.tempmax ) }°C ~ ${ fahrenheitToCelsius( day.tempmin ) }°C` }
                     className={ `flex flex-col items-center justify-around max-xs:flex-row ${ index === forecastData.length - 1 ? "max-lg:hidden max-xs:flex" : ""
                         }` } />;
             } ) }
