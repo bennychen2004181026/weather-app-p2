@@ -1,4 +1,4 @@
-## Weather App P2
+## Weather App
 
 ##### Author: Ben Chen
 
@@ -23,6 +23,7 @@ An app for displaying current weather and 4 days forecasting of cities in Austra
     - [Features](#features)
     - [Important Links](#important-links)
     - [Error Responds](#error-responds)
+    - [Unit Tests](#unit-tests)
     - [Technologies Used](#technologies-used)
     - [Components Structure by Responsibilities](#components-structure-by-responsibilities)
     - [Reusable components](#reusable-components)
@@ -51,6 +52,11 @@ An app for displaying current weather and 4 days forecasting of cities in Austra
 If error happened, such as error with response from Visual Crossing Weather, the error message will be displayed in the snackbar pop up.
 ![error_display](./docs/error.png)
 
+#### Unit Tests
+Unit testing is a critical aspect of software development. It involves testing individual components or units of code to ensure they work as expected.
+With the help from `@testing-library/react`, I wrote 25 unit tests for 11 fundamental components including Name, WeatherIcon, Image, etc.
+
+![unit_tests](./docs/tests.png)
 #### Technologies Used
 
 * React
