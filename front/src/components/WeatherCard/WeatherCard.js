@@ -22,7 +22,6 @@ const WeatherCard = () =>
     useEffect( () =>
     {
         const firstError = dataError.find( e => e != null );
-        console.log( dataError );
         if ( firstError )
         {
             showSnackbar( `${ firstError.message }`, 'error' );
@@ -41,7 +40,7 @@ const WeatherCard = () =>
             </div> );
     }
 
-    if ( data.every( element => element ) )
+    if ( data.length > 0 && data.every( element => element ) )
     {
         return (
             <div className="max-h-[900px] max-md:max-h-[1500px] max-xl:w-[90%] max-lg:w-[95%] max-md:h-full max-md:flex max-md:flex-col max-w-[1650px] p-6 max-xs:p-2 rounded-3xl w-4/5 h-4/5 mx-auto bg-slate-100 shadow-blue-800 overflow-hidden grid grid-cols-6 grid-rows-6 gap-4" >
