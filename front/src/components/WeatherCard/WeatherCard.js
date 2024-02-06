@@ -27,7 +27,7 @@ const WeatherCard = () =>
         {
             showSnackbar( `${ firstError.message }`, 'error' );
         }
-    }, [ dataError ] );
+    }, [ dataError, showSnackbar ] );
 
     if ( isLoading )
     {
