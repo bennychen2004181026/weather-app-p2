@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+
 import { useSnackbar } from 'notistack';
 
 import CloseSnackbarButton from '../components/CloseButton';
@@ -5,7 +7,7 @@ import CloseSnackbarButton from '../components/CloseButton';
 const useSnackbarHelper = () =>
 {
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-    const customSnackbar = ( message, variant ) =>
+    const customSnackbar = useCallback( ( message, variant ) =>
     {
         enqueueSnackbar( message, {
             variant,
@@ -20,7 +22,7 @@ const useSnackbarHelper = () =>
                 whiteSpace: 'pre-wrap',
             },
         } );
-    };
+    }, [ enqueueSnackbar, closeSnackbar ] );
 
     return customSnackbar;
 };
